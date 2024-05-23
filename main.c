@@ -126,5 +126,7 @@ int main(void) {
 	printf("Imperative:\n");
 	traverseBBLR_imperative(root, depth);
 
+	free_node(&root);
+
 	return 0;
 }
