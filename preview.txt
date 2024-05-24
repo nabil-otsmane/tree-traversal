@@ -1,0 +1,51 @@
+              	______________AA______________
+               /                              \
+        ______VV______                  ______VV______
+       /              \                /              \
+    __ZZ__          __ZZ__          __ZZ__          __ZZ__
+   /      \        /      \        /      \        /      \
+  YY      YY      YY      YY      YY      YY      YY      YY
+ /  \    /  \    /  \    /  \    /  \    /  \    /  \    /  \
+XX  XX  XX  XX  XX  XX  XX  XX  XX  XX  XX  XX  XX  XX  XX  XX
+
+data length = 2
+node_count(N) = 2^N - 1
+
+## total width?
+depth = 1, width = data_len # cuz we only have the value 
+depth = 2, width = 3*data_len # cuz we have 3 elements
+depth = N, width = node_count(N) * data_len
+
+
+example:
+depth = 5
+width = (2^5 - 1) * 2 = (32 - 1) * 2 = 31 * 2 = 62
+
+## space between elements in the same level?
+depth = 5, layer = 0, space = 0 # we are in the root
+depth = 5, layer = 1, space = 30
+depth = 5, layer = 2, space = 14
+depth = 5, layer = 3, space = 6 = node_count(5 - 3) * data_count
+depth = 5, layer = 4, space = 2 = 1 * data_length
+
+depth = N, layer = M, space = M == 0? 0 : node_count(N - M) * data_count
+
+## space before first element?
+depth = 5, layer = 0, space = 30
+depth = 5, layer = 1, space = 14
+depth = 5, layer = 2, space = 6
+depth = 5, layer = 3, space = 2
+depth = 5, layer = 4, space = 0
+
+depth = N, layer = M, space = node_count(N - M - 1) * data_count
+
+## dash count in one side?
+depth = 5, layer = 0, space = 14
+depth = 5, layer = 1, space = 6
+depth = 5, layer = 2, space = 2
+depth = 5, layer = 3, space = 0
+depth = 5, layer = 4, space = 0
+
+depth = N, layer = M, space = node_count(N - M - 2) * data_count
+
+
